@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+  }
+  
+  header {
+    background-color: #333;
+    color: #FFF;
+    padding: 20px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  header nav a {
+    color: #FFF;
+    text-decoration: none;
+    margin: 0 20px;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  section form input[type="text"],
+  section form input[type="email"],
+  section form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  

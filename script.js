@@ -1,55 +1,59 @@
 const mysql = require('mysql');
 
-// Create a connection to the JawsDB database
-// const connection = mysql.createConnection(process.env.JAWSDB_URL);
-
-var connection = mysql.createConnection({
-    host: "c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "l0oj7cmpddyd750c",
-    password: "bpro1x7fa5qqu39i"
-  });
+// Create a connection to the MySQL database
+const connection = mysql.createConnection({
+    host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    user: 'l0oj7cmpddyd750c',
+    password: 'bpro1x7fa5qqu39i',
+    database: 'vb76cap954zn5e0e'
+});
 
 // Connect to the database
-connection.connect(function(err) {
-  if (err) {
-    console.error('Error connecting to database:', err.stack);
-    return;
-  }
-  console.log('Connected to database!');
+connection.connect((error) => {
+    if (error) {
+        console.error('Error connecting to the database: ' + error.stack);
+        return;
+    }
+
+    console.log('Connected to the database.');
 });
 
-// Insert a new uniform item
-const item = 'Uniform Shirt';
-const size = 'Medium';
-const available = true;
-connection.query('INSERT INTO uniform (item, size, available) VALUES (?, ?, ?)', [item, size, available], function(err, result) {
-  if (err) {
-    console.error('Error inserting uniform item:', err.stack);
-    return;
-  }
-  console.log('Inserted uniform item with id', result.insertId);
-});
+// Define the new uniform item
+const name = 'New Uniform Item';
+const size = 'L';
+const checked_out = false;
 
-// Select all uniform items
-connection.query('SELECT * FROM uniform', function(err, results) {
-  if (err) {
-    console.error('Error selecting uniform items:', err.stack);
-    return;
-  }
-  console.log('Selected', results.length, 'uniform items');
-  console.log(results);
-});
+// Insert the new uniform item into the database
+connection.query('INSERT INTO uniform (name, size, checked_out) VALUES (?, ?, ?)', [name, size, checked_out], (error, results, fields) => {
+    if (error) {
+        console.error('Error inserting uniform item: ' + error.stack);
+        return;
+    }
 
-// Update a uniform item's availability
-const itemId = 1;
-const newAvailable = false;
-connection.query('UPDATE uniform SET available = ? WHERE id = ?', [newAvailable, itemId], function(err, result) {
-  if (err) {
-    console.error('Error updating uniform item:', err.stack);
-    return;
-  }
-  console.log('Updated uniform item with id', itemId);
-});
+    console.log('Uniform item inserted successfully.');
 
-// Disconnect from the database
-connection.end();
+    // Retrieve the list of uniform items from the database
+    connection.query('SELECT * FROM uniform', (error, results, fields) => {
+        if (error) {
+            console.error('Error retrieving uniform items: ' + error.stack);
+            return;
+        }
+
+        // Generate the HTML for the list of uniform items
+        let html = '';
+        results.forEach((item) => {
+            html += '<div>' +
+                '<h2>' + item.name + '</h2>' +
+                '<p>Size: ' + item.size + '</p>' +
+                '<p>Checked Out: ' + (item.checked_out ? 'Yes' : 'No') + '</p>' +
+                '</div>';
+        });
+
+        // Insert the HTML into the page
+        const uniformList = document.getElementById('uniform-list');
+        uniformList.innerHTML = html;
+
+        // Close the database connection
+        connection.end();
+    });
+});

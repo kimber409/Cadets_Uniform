@@ -15,7 +15,8 @@ app.set('view engine', 'ejs');
 //     database: 'vb76cap954zn5e0e'
 // });
 
-const connection = mysql.createConnection({'process.env.JAWSDB_URL'});
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
+
 
 // Connect to the database
 connection.connect((error) => {

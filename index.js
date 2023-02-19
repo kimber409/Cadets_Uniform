@@ -8,14 +8,14 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 // Create a connection to the MySQL database
-// const connection = mysql.createConnection({
-//     host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-//     user: 'l0oj7cmpddyd750c',
-//     password: 'bpro1x7fa5qqu39i',
-//     database: 'vb76cap954zn5e0e'
-// });
+const connection = mysql.createConnection({
+    host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    user: 'l0oj7cmpddyd750c',
+    password: 'bpro1x7fa5qqu39i',
+    database: 'vb76cap954zn5e0e'
+});
 
-const connection = mysql.createConnection(process.env.JAWSDB_URL);
+// const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 
 // Connect to the database
@@ -47,7 +47,8 @@ app.post('/', (req, res) => {
     const newItem = {
         name: name,
         size: req.body.size,
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
+        gender: req.body.gender
     };
     connection.query('INSERT INTO uniform SET ?', newItem, (error, results, fields) => {
         if (error) {
@@ -84,6 +85,8 @@ app.delete('/:id', (req, res) => {
         res.json({});
     });
 });
+
+
 
 // Start the server
 const port = process.env.PORT || 3000;

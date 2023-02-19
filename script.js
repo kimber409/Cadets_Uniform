@@ -1,21 +1,17 @@
 const express = require('express');
 const mysql = require('mysql');
-const bodyParser = require('body-parser');
 const app = express();
 const ejs = require('ejs');
-app.use(express.static('public'));
-app.use(bodyParser.json());
+app.use(express.static('public'))
 app.set('view engine', 'ejs');
 
 // Create a connection to the MySQL database
-// const connection = mysql.createConnection({
-//     host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-//     user: 'l0oj7cmpddyd750c',
-//     password: 'bpro1x7fa5qqu39i',
-//     database: 'vb76cap954zn5e0e'
-// });
-
-const connection = mysql.createConnection({'process.env.JAWSDB_URL'});
+const connection = mysql.createConnection({
+    host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    user: 'l0oj7cmpddyd750c',
+    password: 'bpro1x7fa5qqu39i',
+    database: 'vb76cap954zn5e0e'
+});
 
 // Connect to the database
 connection.connect((error) => {
@@ -39,15 +35,7 @@ app.get('/', (req, res) => {
 
 // Define the API endpoint that adds a new item
 app.post('/', (req, res) => {
-    const name = req.body.name;
-    if (!name) {
-        return res.status(400).json({ error: 'Name is required' });
-    }
-    const newItem = {
-        name: name,
-        size: req.body.size,
-        quantity: req.body.quantity
-    };
+    const newItem = req.body;
     connection.query('INSERT INTO uniform SET ?', newItem, (error, results, fields) => {
         if (error) {
             console.error('Error adding uniform item: ' + error.stack);
@@ -55,20 +43,6 @@ app.post('/', (req, res) => {
         }
         newItem.id = results.insertId;
         res.json(newItem);
-    });
-});
-
-
-// Define the API endpoint that updates an item
-app.patch('/:id', (req, res) => {
-    const id = req.params.id;
-    const quantity = req.body.quantity;
-    connection.query('UPDATE uniform SET quantity = ? WHERE id = ?', [quantity, id], (error, results, fields) => {
-        if (error) {
-            console.error('Error updating uniform item: ' + error.stack);
-            return res.status(500).json({ error: 'Error updating uniform item' });
-        }
-        res.json({});
     });
 });
 

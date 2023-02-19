@@ -2,86 +2,26 @@
 <html>
   <head>
     <title>Cadets Uniform</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 20px;
-      }
-      
-      h1 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      
-      form {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-      }
-      
-      form label {
-        margin-bottom: 10px;
-      }
-      
-      form input,
-      form select {
-        margin-bottom: 20px;
-        padding: 5px;
-      }
-      
-      form button {
-        padding: 5px 10px;
-        background-color: #2196F3;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-      
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      
-      li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        margin-bottom: 10px;
-        background-color: #f2f2f2;
-        border-radius: 3px;
-      }
-      
-      li span {
-        flex: 1;
-      }
-      
-      li input {
-        width: 50px;
-      }
-      
-      li button {
-        background-color: #f44336;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Cadets Uniform</h1>
-    <form id="add-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="size">Size:</label>
-      <input type="text" id="size" name="size" required>
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" required>
-      <button type="submit">Add</button>
-    </form>
+    <h1>Squadron Uniform</h1>
+    <button class="add-btn-green" id="add-btn">Add</button>
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="popup-close" id="popup-close">&times;</span>
+        <h2>Add Uniform Item</h2>
+        <form id="add-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="size">Size:</label>
+          <input type="text" id="size" name="size" required>
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" required>
+          <button id="submit-btn" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
     <h2>Uniform items:</h2>
     <ul id="item-list">
       <% for (var i = 0; i < results.length; i++) { %>

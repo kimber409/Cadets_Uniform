@@ -36,7 +36,7 @@ form.addEventListener('submit', (event) => {
             <span>${name}</span>
             <span>${size}</span>
             <span><input type="number" class="quantity" value="${quantity}" data-id="${data.id}"></span>
-            <span><button class="delete" data-id="${data.id}">X</button></span>
+            <span><button class="delete" data-id="${data.id}">Delete</button></span>
         `;
         itemList.appendChild(item);
         nameInput.value = '';
@@ -77,3 +77,25 @@ itemList.addEventListener('click', (event) => {
         .catch(error => console.error(error));
     }
 });
+
+var addBtn = document.getElementById('add-btn');
+var popup = document.getElementById('popup');
+var popupClose = document.getElementById("popup-close");
+var submitBtn = document.getElementById("submit-btn");
+
+addBtn.addEventListener('click', function() {
+  popup.style.display = 'block';
+});
+
+popupClose.addEventListener("click", function() {
+  popup.style.display = "none";
+});
+
+submitBtn.addEventListener("click", function() {
+  // Handle form submission here
+  popup.style.display = "none";
+});
+
+
+
+

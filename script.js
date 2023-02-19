@@ -22,7 +22,7 @@ connection.connect((error) => {
 });
 
 // Define the API endpoint that returns the list of uniform items in JSON format
-app.get('/api/uniform', (req, res) => {
+app.get('/', (req, res) => {
     connection.query('SELECT * FROM uniform', (error, results, fields) => {
         if (error) {
             console.error('Error retrieving uniform items: ' + error.stack);

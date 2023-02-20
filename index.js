@@ -8,14 +8,9 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 // Create a connection to the MySQL database
-const connection = mysql.createConnection({
-    host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-    user: 'l0oj7cmpddyd750c',
-    password: 'bpro1x7fa5qqu39i',
-    database: 'vb76cap954zn5e0e'
-});
 
-// const connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 
 // Connect to the database

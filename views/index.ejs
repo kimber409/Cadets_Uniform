@@ -80,60 +80,83 @@
     
     <h2>Uniform items:</h2>
     <ul id="item-list">
-    <h3>Dark Blue Shirts</h3>
-    <li style="font-weight: bold;">
-        <span>Gender</span>
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% const sortedResults = results.filter(item => item.name.includes('2C')).sort((a, b) => a.gender.localeCompare(b.gender)) %>
-    <% for (var i = 0; i < sortedResults.length; i++) { %>
-        <li data-id="<%= sortedResults[i].id %>">
-            <span><%= sortedResults[i].gender %></span>
-            <span><%= sortedResults[i].size %></span>
-            <span><input type="number" class="quantity" value="<%= sortedResults[i].quantity %>" data-id="<%= sortedResults[i].id %>"></span>
-            <span><button class="delete" data-id="<%= sortedResults[i].id %>">Delete</button></span>
-        </li>
-    <% } %>
+        <h3>
+            <button id="2C-toggle-button" onclick="toggleList('2C')">▶</button>
+            Dark Blue Shirts
+        </h3>
+        <ul id="2C-list" style="display:none">
+            <li style="font-weight: bold;">
+                <span>Gender</span>
+                <span>Size</span>
+                <span>Quantity</span>
+                <span>Action</span>
+            </li>
+            <% const sortedResults = results.filter(item => item.name.includes('2C')).sort((a, b) => a.gender.localeCompare(b.gender)) %>
+            <% for (var i = 0; i < sortedResults.length; i++) { %>
+                <li data-id="<%= sortedResults[i].id %>">
+                    <span><%= sortedResults[i].gender %></span>
+                    <span><%= sortedResults[i].size %></span>
+                    <span><input type="number" class="quantity" value="<%= sortedResults[i].quantity %>" data-id="<%= sortedResults[i].id %>"></span>
+                    <span><button class="delete" data-id="<%= sortedResults[i].id %>">Delete</button></span>
+                </li>
+            <% } %>
+        </ul>
     
-    <h3>Light Blue Shirts</h3>
-    <li style="font-weight: bold;">
-        <span>Gender</span>
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% const testSortedResults = results.filter(item => item.name.includes('2A')).sort((a, b) => a.gender.localeCompare(b.gender)) %>
-    <% for (var i = 0; i < testSortedResults.length; i++) { %>
+    
+    <h3>
+        <button id="2A-toggle-button" onclick="toggleList('2A')">▶</button>
+        Light Blue Shirts
+    </h3>
+    <ul id="2A-list" style="display:none">
+        <li style="font-weight: bold;">
+            <span>Gender</span>
+            <span>Size</span>
+            <span>Quantity</span>
+            <span>Action</span>
+        </li>
+        <% const testSortedResults = results.filter(item => item.name.includes('2A')).sort((a, b) => a.gender.localeCompare(b.gender)) %>
+        <% for (var i = 0; i < testSortedResults.length; i++) { %>
         <li data-id="<%= testSortedResults[i].id %>">
             <span><%= testSortedResults[i].gender %></span>
             <span><%= testSortedResults[i].size %></span>
             <span><input type="number" class="quantity" value="<%= testSortedResults[i].quantity %>" data-id="<%= testSortedResults[i].id %>"></span>
             <span><button class="delete" data-id="<%= testSortedResults[i].id %>">Delete</button></span>
         </li>
-        
-    <% } %>
-
-    <h3>Trousers/Skirts</h3>
-    <li style="font-weight: bold;">
-        <span>Gender</span>
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% for (var i = 0; i < results.length; i++) { %>
-        <% if (results[i].name.includes('Trousers') || results[i].name.includes('Skirt')) { %>
-        <li data-id="<%= results[i].id %>">
-            <span><%= results[i].name %></span>
-            <span><%= results[i].size %></span>
-            <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-            <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
-        </li>
         <% } %>
-    <% } %>
+    </ul>
+
     
-    <h3>Jumpers</h3>
+    
+
+
+    <h3>
+        <button id="trousers-toggle-button" onclick="toggleList('trousers')">▶</button>
+        Trousers/Skirts
+    </h3>
+    <ul id="trousers-list" style="display:none">
+        <li style="font-weight: bold;">
+            <span>Gender</span>
+            <span>Size</span>
+            <span>Quantity</span>
+            <span>Action</span>
+        </li>
+        <% const trousersSortedResults = results.filter(item => item.name.includes('Trousers') || item.name.includes('Skirt')).sort((a, b) => a.name.localeCompare(b.name)) %>
+        <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
+            <li data-id="<%= trousersSortedResults[i].id %>">
+                <span><%= trousersSortedResults[i].gender %></span>
+                <span><%= trousersSortedResults[i].size %></span>
+                <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
+                <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>
+            </li>
+        <% } %>
+    </ul>
+    
+
+    <h3>
+        <button id="jumpers-toggle-button" onclick="toggleList('jumpers')">▶</button>
+        Jumpers
+    </h3>
+    <ul id="jumpers-list" style="display:none">
     <li style="font-weight: bold;">
         <span>Gender</span>
         <span>Size</span>
@@ -143,7 +166,6 @@
     <% for (var i = 0; i < results.length; i++) { %>
         <% if (results[i].name.includes('Jumper') || results[i].name.includes('Fleece') || results[i].name.includes('Combat Jacket') || results[i].name.includes('Waterproof Jacket')) { %>
         <li data-id="<%= results[i].id %>">
-            <!-- <span><%= results[i].name %></span> -->
             <span><%= results[i].gender %></span>
             <span><%= results[i].size %></span>
             <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
@@ -151,9 +173,13 @@
         </li>
         <% } %>
     <% } %>
+    </ul>
 
-
-    <h3>MTP PCS Uniform</h3>
+    <h3>
+        <button id="mtp-pcs-uniform-toggle-button" onclick="toggleList('mtp-pcs-uniform')">▶</button>
+        MTP PCS Uniform
+    </h3>
+    <ul id="mtp-pcs-uniform-list" style="display: none;">
     <li style="font-weight: bold;">
         <span>Name</span>
         <span>Size</span>
@@ -163,18 +189,21 @@
     <% for (var i = 0; i < results.length; i++) { %>
         <% if (results[i].name.includes('MTP PCS')) { %>
         <li data-id="<%= results[i].id %>">
-            <span><%= results[i].name %></span>
-            <span><%= results[i].size %></span>
-            <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-            <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+        <span><%= results[i].name %></span>
+        <span><%= results[i].size %></span>
+        <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
+        <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
         </li>
         <% } %>
     <% } %>
-  
+    </ul>
 
-
-
-    <h3>Accessories</h3>
+    
+    <h3>
+        <button id="accessories-toggle-button" onclick="toggleList('accessories')">▶</button>
+        Accessories
+    </h3>
+    <ul id="accessories-list" style="display: none;">
     <li style="font-weight: bold;">
         <span>Name</span>
         <span>Size</span>
@@ -184,13 +213,15 @@
     <% for (var i = 0; i < results.length; i++) { %>
         <% if (results[i].name.includes('Parade Shoes') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Brassard') || results[i].name.includes('Tie') || results[i].name.includes('Webbing Belt')) { %>
         <li data-id="<%= results[i].id %>">
-            <span><%= results[i].name %></span>
-            <span><%= results[i].size %></span>
-            <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-            <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+        <span><%= results[i].name %></span>
+        <span><%= results[i].size %></span>
+        <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
+        <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
         </li>
         <% } %>
     <% } %>
+    </ul>
+
 
 </ul>
 

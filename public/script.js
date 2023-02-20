@@ -128,19 +128,43 @@ filterForm.addEventListener('submit', (event) => {
     // const name = filterForm.querySelector('#name-select').value;
     const itemList = document.querySelector('#item-list');
     const items = itemList.querySelectorAll('li');
-
+  
     items.forEach((item) => {
-        const itemGender = item.querySelector('span:first-child').textContent;
-        const itemSize = item.querySelector('span:nth-child(2)').textContent;
-        // const nameSize = item.querySelector('span:nth-child(3)').textContent;
-        if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size ) && (name === '' || nameSize === name)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
+      const itemGender = item.querySelector('span:first-child').textContent;
+      const itemSize = item.querySelector('span:nth-child(2)').textContent;
+    //   const itemName = item.querySelector('span:nth-child(3)').textContent;
+  
+      if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size)) {
+        item.style.display = '';
+        // Check if the item's toggle list is collapsed
+        const toggleList = item.closest('.toggle-list');
+        if (toggleList.style.display === 'none') {
+          toggleList.style.display = 'block';
+          const toggleButton = toggleList.querySelector('.toggle-button');
+          toggleButton.textContent = '▼';
         }
+      } else {
+        item.style.display = 'none';
+      }
     });
+  });
+  
 });
-});
 
 
 
+function toggleList(id) {
+    var list = document.getElementById(id + "-list");
+    var button = document.getElementById(id + "-toggle-button");
+    var header = list.getElementsByTagName("li")[0];
+    if (list.style.display === "none") {
+      list.style.display = "block";
+      button.textContent = "▼";
+    //   header.style.display = "block";
+    } else {
+      list.style.display = "none";
+      button.textContent = "▶";
+    //   header.style.display = "none";
+    }
+  }
+  

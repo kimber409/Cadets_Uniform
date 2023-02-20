@@ -35,7 +35,7 @@ form.addEventListener('submit', (event) => {
         const item = document.createElement('li');
         item.dataset.id = data.id;
         item.innerHTML = `
-            <span>${name}</span>
+            <span">${name}</span>
             <span>${size}</span>
             <span><input type="number" class="quantity" value="${quantity}" data-id="${data.id}"></span>
             <span><button class="delete" data-id="${data.id}">Delete</button></span>
@@ -125,13 +125,15 @@ filterForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const gender = filterForm.querySelector('#gender-select').value;
     const size = filterForm.querySelector('#size-select').value;
+    // const name = filterForm.querySelector('#name-select').value;
     const itemList = document.querySelector('#item-list');
     const items = itemList.querySelectorAll('li');
 
     items.forEach((item) => {
         const itemGender = item.querySelector('span:first-child').textContent;
         const itemSize = item.querySelector('span:nth-child(2)').textContent;
-        if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size)) {
+        // const nameSize = item.querySelector('span:nth-child(3)').textContent;
+        if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size ) && (name === '' || nameSize === name)) {
             item.style.display = '';
         } else {
             item.style.display = 'none';

@@ -133,12 +133,22 @@ filterForm.addEventListener('submit', (event) => {
       const itemGender = item.querySelector('span:first-child').textContent;
       const itemSize = item.querySelector('span:nth-child(2)').textContent;
       // const nameSize = item.querySelector('span:nth-child(3)').textContent;
-      if ((gender === '' || itemGender === gender) && (size === '' || size.split('/').map(s => parseInt(s)).includes(parseInt(itemSize)))) {
+      const itemSizes = itemSize.split('/');
+      const filterSizes = size.split('/').map(s => parseInt(s));
+      let showItem = false;
+      for (const s of filterSizes) {
+          if (itemSizes.includes(s.toString())) {
+              showItem = true;
+              break;
+          }
+      }
+      if ((gender === '' || itemGender === gender) && (size === '' || showItem)) {
           item.style.display = '';
       } else {
           item.style.display = 'none';
       }
   });
+  
   
 });
 });

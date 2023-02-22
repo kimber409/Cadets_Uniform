@@ -7,7 +7,7 @@
   <body>
     <h1>KIMBERS TOTALLY AWSOME INVENTORY SYSTEM</h1>
     <button class="add-btn-green" id="add-btn">Add</button>
-    <button class="add-btn-green" id="open-filter-popup">Filter</button>
+    <!-- <button class="add-btn-green" id="open-filter-popup">Filter</button> -->
     <div class="popup" id="popup">
       <div class="popup-content">
         <span class="popup-close" id="popup-close">&times;</span>
@@ -84,6 +84,9 @@
     
     <h2>Uniform items:</h2>
     <ul id="item-list">
+
+        
+
         <h3>
             <button id="2C-toggle-button" onclick="toggleList('2C')">▶</button>
             Dark Blue Shirts
@@ -127,6 +130,29 @@
             <span><button class="delete" data-id="<%= testSortedResults[i].id %>">Delete</button></span>
         </li>
         <% } %>
+    </ul>
+
+    <h3>
+        <button id="ac-toggle-button" onclick="toggleList('ac')">▶</button>
+        Accessories
+    </h3>
+    <ul id="ac-list" style="display:none">
+    <li style="font-weight: bold;">
+        <span>Name</span>
+        <span>Size</span>
+        <span>Quantity</span>
+        <span>Action</span>
+    </li>
+    <% for (var i = 0; i < results.length; i++) { %>
+        <% if (results[i].name.includes('Belts') || results[i].name.includes('Tie') || results[i].name.includes('Brassard') || results[i].name.includes('Parade') || results[i].name.includes('Socks') || results[i].name.includes('Yellow Lanyard')) { %> 
+        <li data-id="<%= results[i].id %>">
+            <span><%= results[i].name %></span>
+            <span><%= results[i].size %></span>
+            <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
+            <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+        </li>
+        <% } %>
+    <% } %>
     </ul>
 
     <h3>
@@ -175,7 +201,6 @@
     </h3>
     <ul id="skirts-list" style="display:none">
         <li style="font-weight: bold;">
-            <span>Gender</span>
             <span>Size</span>
             <span>Quantity</span>
             <span>Action</span>
@@ -183,7 +208,6 @@
         <% const SkirtSortedResults = results.filter(item => item.name.includes('Skirt')).sort((a, b) => a.name.localeCompare(b.name)) %>
         <% for (var i = 0; i < SkirtSortedResults.length; i++) { %>
             <li data-id="<%= SkirtSortedResults[i].id %>">
-                <span><%= SkirtSortedResults[i].gender %></span>
                 <span><%= SkirtSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= SkirtSortedResults[i].quantity %>" data-id="<%= SkirtSortedResults[i].id %>"></span>
                 <span><button class="delete" data-id="<%= SkirtSortedResults[i].id %>">Delete</button></span>
@@ -198,7 +222,6 @@
     </h3>
     <ul id="jumpers-list" style="display:none">
     <li style="font-weight: bold;">
-        <span>Gender</span>
         <span>Size</span>
         <span>Quantity</span>
         <span>Action</span>
@@ -206,7 +229,6 @@
     <% for (var i = 0; i < results.length; i++) { %>
         <% if (results[i].name.includes('Jumper') || results[i].name.includes('Fleece') || results[i].name.includes('Combat Jacket') || results[i].name.includes('Waterproof Jacket')) { %>
         <li data-id="<%= results[i].id %>">
-            <span><%= results[i].gender %></span>
             <span><%= results[i].size %></span>
             <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
             <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
@@ -237,64 +259,9 @@
             </li>
         <% } %>
     </ul>
-    
-    
-
-    <h3>
-        <button id="mtp-pcs-uniform-toggle-button" onclick="toggleList('mtp-pcs-uniform')">▶</button>
-        MTP PCS Uniform
-    </h3>
-    <ul id="mtp-pcs-uniform-list" style="display: none;">
-    <li style="font-weight: bold;">
-        <span>Name</span>
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% for (var i = 0; i < results.length; i++) { %>
-        <% if (results[i].name.includes('MTP PCS')) { %>
-        <li data-id="<%= results[i].id %>">
-        <span><%= results[i].name %></span>
-        <span><%= results[i].size %></span>
-        <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-        <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
-        </li>
-        <% } %>
-    <% } %>
-    </ul>
-
-    
-    <h3>
-        <button id="accessories-toggle-button" onclick="toggleList('accessories')">▶</button>
-        Accessories
-    </h3>
-    <ul id="accessories-list" style="display: none;">
-        <li style="font-weight: bold;">
-            <span>Name</span>
-            <span>Size</span>
-            <span>Quantity</span>
-            <span>Action</span>
-        </li>
-        <% 
-        results = results.filter(item => item.type === 'accessory');
-        for (var i = 0; i < results.length; i++) { 
-            var name = results[i].name.toLowerCase();
-            if (/parade shoes|socks|yellow lanyard|belts|brassard|tie|webbing belt/.test(name)) { 
-        %>
-            <li data-id="<%= results[i].id %>">
-                <span><%= results[i].name %></span>
-                <span><%= results[i].size %></span>
-                <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-                <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
-            </li>
-        <% } %>
-        <% } %>
-    </ul>
-    
-
-
 </ul>
 
+    
 
     <script type="text/javascript" src="script.js"></script>
   </body>

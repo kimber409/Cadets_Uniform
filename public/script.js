@@ -41,6 +41,8 @@ form.addEventListener('submit', (event) => {
             <span><button class="delete" data-id="${data.id}">Delete</button></span>
         `;
 
+        console.log(name);
+
         itemList.appendChild(item);
         nameInput.value = '';
         sizeInput.value = '';
@@ -133,16 +135,7 @@ filterForm.addEventListener('submit', (event) => {
       const itemGender = item.querySelector('span:first-child').textContent;
       const itemSize = item.querySelector('span:nth-child(2)').textContent;
       // const nameSize = item.querySelector('span:nth-child(3)').textContent;
-      const itemSizes = itemSize.split('/');
-      const filterSizes = size.split('/').map(s => parseInt(s));
-      let showItem = false;
-      for (const s of filterSizes) {
-          if (itemSizes.includes(s.toString())) {
-              showItem = true;
-              break;
-          }
-      }
-      if ((gender === '' || itemGender === gender) && (size === '' || showItem)) {
+      if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size)) {
           item.style.display = '';
       } else {
           item.style.display = 'none';

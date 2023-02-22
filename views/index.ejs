@@ -161,12 +161,12 @@
             <span>Quantity</span>
             <span>Action</span>
         </li>
-        <% const trousersSortedResults = results.filter(item => item.name.includes('Slacks')).sort((a, b) => a.name.localeCompare(b.name)) %>
-        <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
-            <li data-id="<%= trousersSortedResults[i].id %>">
-                <span><%= trousersSortedResults[i].size %></span>
-                <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
-                <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>
+        <% const slacksSortedResults = results.filter(item => item.name.includes('Slacks')).sort((a, b) => a.name.localeCompare(b.name)) %>
+        <% for (var i = 0; i < slacksSortedResults.length; i++) { %>
+            <li data-id="<%= slacksSortedResults[i].id %>">
+                <span><%= slacksSortedResults[i].size %></span>
+                <span><input type="number" class="quantity" value="<%= slacksSortedResults[i].quantity %>" data-id="<%= slacksSortedResults[i].id %>"></span>
+                <span><button class="delete" data-id="<%= slacksSortedResults[i].id %>">Delete</button></span>
             </li>
         <% } %>
     </ul>

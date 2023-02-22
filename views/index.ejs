@@ -269,23 +269,28 @@
         Accessories
     </h3>
     <ul id="accessories-list" style="display: none;">
-    <li style="font-weight: bold;">
-        <span>Name</span>
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% for (var i = 0; i < results.length; i++) { %>
-        <% if (results[i].name.includes('Parade Shoes') || results[i].name.includes('Socks') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Belts') || results[i].name.includes('Brassard') || results[i].name.includes('Tie') || results[i].name.includes('Webbing Belt')) { %>
-        <li data-id="<%= results[i].id %>">
-        <span><%= results[i].name %></span>
-        <span><%= results[i].size %></span>
-        <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-        <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+        <li style="font-weight: bold;">
+            <span>Name</span>
+            <span>Size</span>
+            <span>Quantity</span>
+            <span>Action</span>
         </li>
+        <% 
+        results = results.filter(item => item.type === 'accessory');
+        for (var i = 0; i < results.length; i++) { 
+            var name = results[i].name.toLowerCase();
+            if (/parade shoes|socks|yellow lanyard|belts|brassard|tie|webbing belt/.test(name)) { 
+        %>
+            <li data-id="<%= results[i].id %>">
+                <span><%= results[i].name %></span>
+                <span><%= results[i].size %></span>
+                <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
+                <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+            </li>
         <% } %>
-    <% } %>
+        <% } %>
     </ul>
+    
 
 
 </ul>

@@ -130,15 +130,16 @@ filterForm.addEventListener('submit', (event) => {
     const items = itemList.querySelectorAll('li');
 
     items.forEach((item) => {
-        const itemGender = item.querySelector('span:first-child').textContent;
-        const itemSize = item.querySelector('span:nth-child(2)').textContent;
-        // const nameSize = item.querySelector('span:nth-child(3)').textContent;
-        if ((gender === '' || itemGender === gender) && (size === '' || itemSize === size )) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
-    });
+      const itemGender = item.querySelector('span:first-child').textContent;
+      const itemSize = item.querySelector('span:nth-child(2)').textContent;
+      // const nameSize = item.querySelector('span:nth-child(3)').textContent;
+      if ((gender === '' || itemGender === gender) && (size === '' || size.split('/').map(s => parseInt(s)).includes(parseInt(itemSize)))) {
+          item.style.display = '';
+      } else {
+          item.style.display = 'none';
+      }
+  });
+  
 });
 });
 

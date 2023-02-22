@@ -19,6 +19,7 @@
             <option value="2C">2C Shirt</option>
             <option value="Jumper">Jumper</option>
             <option value="Trousers">Trousers</option>
+            <option value="Slacks">Slacks</option>
             <option value="Skirt">Skirt</option>
             <option value="Waterproof Jacket">Waterproof Jacket</option>
             <option value="Tie">Tie</option>
@@ -128,10 +129,6 @@
         <% } %>
     </ul>
 
-    
-    
-
-
     <h3>
         <button id="trousers-toggle-button" onclick="toggleList('trousers')">▶</button>
         Trousers
@@ -147,6 +144,26 @@
         <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
             <li data-id="<%= trousersSortedResults[i].id %>">
                 <span><%= trousersSortedResults[i].gender %></span>
+                <span><%= trousersSortedResults[i].size %></span>
+                <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
+                <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>
+            </li>
+        <% } %>
+    </ul>
+
+    <h3>
+        <button id="slacks-toggle-button" onclick="toggleList('slacks')">▶</button>
+        Slacks
+    </h3>
+    <ul id="slacks-list" style="display:none">
+        <li style="font-weight: bold;">
+            <span>Size</span>
+            <span>Quantity</span>
+            <span>Action</span>
+        </li>
+        <% const trousersSortedResults = results.filter(item => item.name.includes('Slacks')).sort((a, b) => a.name.localeCompare(b.name)) %>
+        <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
+            <li data-id="<%= trousersSortedResults[i].id %>">
                 <span><%= trousersSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
                 <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>

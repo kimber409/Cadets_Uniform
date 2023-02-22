@@ -135,7 +135,6 @@
     </h3>
     <ul id="trousers-list" style="display:none">
         <li style="font-weight: bold;">
-            <span>Gender</span>
             <span>Size</span>
             <span>Quantity</span>
             <span>Action</span>
@@ -143,7 +142,6 @@
         <% const trousersSortedResults = results.filter(item => item.name.includes('Trousers')).sort((a, b) => a.name.localeCompare(b.name)) %>
         <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
             <li data-id="<%= trousersSortedResults[i].id %>">
-                <span><%= trousersSortedResults[i].gender %></span>
                 <span><%= trousersSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
                 <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>

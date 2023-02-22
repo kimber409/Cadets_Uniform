@@ -205,21 +205,24 @@
         Berets
     </h3>
     <ul id="berets-list" style="display: none;">
-    <li style="font-weight: bold;">
-        <span>Size</span>
-        <span>Quantity</span>
-        <span>Action</span>
-    </li>
-    <% for (var i = 0; i < results.length; i++) { %>
-        <% if (results[i].name.includes('Beret')) { %>
-        <li data-id="<%= results[i].id %>">
-        <span><%= results[i].size %></span>
-        <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-        <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+        <li style="font-weight: bold;">
+            <span>Size</span>
+            <span>Quantity</span>
+            <span>Action</span>
         </li>
+        <% 
+        results = results.filter(item => item.name.includes('Beret'));
+        results.sort((a, b) => b.quantity - a.quantity);
+        for (var i = 0; i < results.length; i++) { 
+        %>
+            <li data-id="<%= results[i].id %>">
+                <span><%= results[i].size %></span>
+                <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
+                <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
+            </li>
         <% } %>
-    <% } %>
     </ul>
+    
 
     <h3>
         <button id="mtp-pcs-uniform-toggle-button" onclick="toggleList('mtp-pcs-uniform')">▶</button>

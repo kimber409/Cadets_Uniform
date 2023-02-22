@@ -140,7 +140,7 @@
             <span>Quantity</span>
             <span>Action</span>
         </li>
-        <% const trousersSortedResults = results.filter(item => item.name.includes('Trousers') || item.name.includes('Skirt')).sort((a, b) => a.name.localeCompare(b.name)) %>
+        <% const trousersSortedResults = results.filter(item => item.name.includes('Trousers')).sort((a, b) => a.name.localeCompare(b.name)) %>
         <% for (var i = 0; i < trousersSortedResults.length; i++) { %>
             <li data-id="<%= trousersSortedResults[i].id %>">
                 <span><%= trousersSortedResults[i].gender %></span>

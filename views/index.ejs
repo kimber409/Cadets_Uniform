@@ -26,6 +26,7 @@
             <option value="MTP PCS">MTP</option>
             <option value="Parade Shoes">Parade Shoes</option>
             <option value="Yellow Lanyard">Yellow Lanyard</option>
+            <option value="Belts">Belts</option>
           </select>
           <label for="gender">Gender:</label>
           <select id="gender" name="gender">
@@ -233,7 +234,7 @@
         <span>Action</span>
     </li>
     <% for (var i = 0; i < results.length; i++) { %>
-        <% if (results[i].name.includes('Parade Shoes') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Brassard') || results[i].name.includes('Tie') || results[i].name.includes('Webbing Belt')) { %>
+        <% if (results[i].name.includes('Parade Shoes') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Yellow Lanyard') || results[i].name.includes('Belts') || results[i].name.includes('Brassard') || results[i].name.includes('Tie') || results[i].name.includes('Webbing Belt')) { %>
         <li data-id="<%= results[i].id %>">
         <span><%= results[i].name %></span>
         <span><%= results[i].size %></span>

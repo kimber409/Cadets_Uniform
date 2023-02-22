@@ -212,7 +212,7 @@
         </li>
         <% 
         results = results.filter(item => item.name.includes('Beret'));
-        results.sort((a, b) => b.quantity - a.quantity);
+        results.sort((a, b) => b.size.localeCompare(a.size));
         for (var i = 0; i < results.length; i++) { 
         %>
             <li data-id="<%= results[i].id %>">
@@ -222,6 +222,7 @@
             </li>
         <% } %>
     </ul>
+    
     
 
     <h3>

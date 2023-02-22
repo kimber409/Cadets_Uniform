@@ -202,11 +202,10 @@
 
     <h3>
         <button id="berets-toggle-button" onclick="toggleList('berets')">▶</button>
-        Beret's
+        Berets
     </h3>
     <ul id="berets-list" style="display: none;">
     <li style="font-weight: bold;">
-        <span>Name</span>
         <span>Size</span>
         <span>Quantity</span>
         <span>Action</span>
@@ -214,7 +213,6 @@
     <% for (var i = 0; i < results.length; i++) { %>
         <% if (results[i].name.includes('Beret')) { %>
         <li data-id="<%= results[i].id %>">
-        <span><%= results[i].name %></span>
         <span><%= results[i].size %></span>
         <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
         <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>

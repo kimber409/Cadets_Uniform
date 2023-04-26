@@ -41,7 +41,8 @@
           <input type="text" id="size" name="size" required>
           <label for="quantity">Quantity:</label>
           <input type="number" id="quantity" name="quantity" required>
-        
+          <label for="quantity">Location:</label>
+          <input type="number" id="location" name="location" required>
           <button id="submit-btn" type="submit">Add</button>
         </form>
       </div>
@@ -120,6 +121,7 @@
             <span>Gender</span>
             <span>Size</span>
             <span>Quantity</span>
+            <span>Location</span>
             <span>Action</span>
         </li>
         <% const testSortedResults = results.filter(item => item.name.includes('2A')).sort((a, b) => a.gender.localeCompare(b.gender)) %>
@@ -128,6 +130,7 @@
             <span><%= testSortedResults[i].gender %></span>
             <span><%= testSortedResults[i].size %></span>
             <span><input type="number" class="quantity" value="<%= testSortedResults[i].quantity %>" data-id="<%= testSortedResults[i].id %>"></span>
+            <span><%= testSortedResults[i].location %></span>
             <span><button class="delete" data-id="<%= testSortedResults[i].id %>">Delete</button></span>
         </li>
         <% } %>

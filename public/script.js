@@ -9,6 +9,7 @@ form.addEventListener('submit', (event) => {
     const name = nameInput.value;
     const size = sizeInput.value;
     const quantity = quantityInput.value;
+    const location = locationInput.value;
    
  
     console.log('name:', name);
@@ -47,6 +48,7 @@ form.addEventListener('submit', (event) => {
         nameInput.value = '';
         sizeInput.value = '';
         quantityInput.value = '';
+        locationInput.value = '';
     })
     .catch(error => console.error(error));
 });
@@ -130,6 +132,7 @@ filterForm.addEventListener('submit', (event) => {
     // const name = filterForm.querySelector('#name-select').value;
     const itemList = document.querySelector('#item-list');
     const items = itemList.querySelectorAll('li');
+    const location = filterForm.querySelector('#location-select').value;
 
     items.forEach((item) => {
       const itemGender = item.querySelector('span:first-child').textContent;

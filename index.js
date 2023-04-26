@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/data', (req, res) => {
+app.get('/', (req, res) => {
     connection.query('SELECT * FROM my_table', (error, results, fields) => {
         if (error) {
             console.error('Error retrieving data: ' + error.stack);

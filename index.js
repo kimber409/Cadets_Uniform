@@ -31,6 +31,15 @@ app.get('/', (req, res) => {
             return res.status(500).json({ error: 'Error retrieving uniform items' });
         }
         res.render('index.ejs', { results });
+    });
+});
+
+app.get('/data', (req, res) => {
+    connection.query('SELECT * FROM my_table', (error, results, fields) => {
+        if (error) {
+            console.error('Error retrieving data: ' + error.stack);
+            return res.status(500).json({ error: 'Error retrieving data' });
+        }
         res.render('data.ejs', { data: results });
     });
 });

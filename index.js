@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
             return res.status(500).json({ error: 'Error retrieving uniform items' });
         }
         res.render('index.ejs', { results });
-        res.render('data.ejs', { data: results });
+        res.render('data.ejs', { results });
     });
 });
 

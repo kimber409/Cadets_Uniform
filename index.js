@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-    connection.query('SELECT * FROM my_table', (error, results, fields) => {
+    connection.query('SELECT * FROM uniform', (error, results, fields) => {
         if (error) {
             console.error('Error retrieving data: ' + error.stack);
             return res.status(500).json({ error: 'Error retrieving data' });

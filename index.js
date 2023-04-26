@@ -44,7 +44,8 @@ app.post('/', (req, res) => {
         name: name,
         size: req.body.size,
         quantity: req.body.quantity,
-        gender: req.body.gender
+        gender: req.body.gender,
+        location: req.body.location
     };
     connection.query('INSERT INTO uniform SET ?', newItem, (error, results, fields) => {
         if (error) {

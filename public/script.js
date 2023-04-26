@@ -5,6 +5,7 @@ form.addEventListener('submit', (event) => {
     const sizeInput = form.querySelector('#size');
     const quantityInput = form.querySelector('#quantity');
     const genderInput = form.querySelector('#gender');
+    const locationInput = form.querySelector('#location');
     const gender = genderInput.value;
     const name = nameInput.value;
     const size = sizeInput.value;

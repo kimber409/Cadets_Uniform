@@ -24,7 +24,8 @@ form.addEventListener('submit', (event) => {
             name,
             size,
             quantity,
-            gender
+            gender,
+            location
         })
     })
     .then(response => {
@@ -39,6 +40,7 @@ form.addEventListener('submit', (event) => {
             <span">${name}</span>
             <span>${size}</span>
             <span><input type="number" class="quantity" value="${quantity}" data-id="${data.id}"></span>
+            <span>${location}</span>
             <span><button class="delete" data-id="${data.id}">Delete</button></span>
         `;
 

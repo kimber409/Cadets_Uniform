@@ -30,7 +30,8 @@ app.get('/', (req, res) => {
             console.error('Error retrieving uniform items: ' + error.stack);
             return res.status(500).json({ error: 'Error retrieving uniform items' });
         }
-        res.render('index.ejs', { results });
+        // res.render('index.ejs', { results });
+        res.json(results);
     });
 });
 

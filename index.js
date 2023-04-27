@@ -36,15 +36,15 @@ app.get('/', (req, res) => {
 
 app.get('/:location', (req, res) => {
     const location = req.params.location;
-    const sql = 'SELECT * FROM uniform WHERE location = ?';
-    connection.query(sql, [location], (error, results, fields) => {
+    connection.query('SELECT * FROM uniform WHERE location = ?;', [location], (error, results, fields) => {
       if (error) {
         console.error('Error retrieving data: ' + error.stack);
         return res.status(500).json({ error: 'Error retrieving data' });
       }
-      res.render('data.ejs', { data: results });
+      res.render('data.ejs', { data: results, location: location });
     });
   });
+  
   
 
 // Define the API endpoint that adds a new item

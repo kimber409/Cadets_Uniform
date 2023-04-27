@@ -107,7 +107,7 @@
                     <span><%= sortedResults[i].gender %></span>
                     <span><%= sortedResults[i].size %></span>
                     <span><input type="number" class="quantity" value="<%= sortedResults[i].quantity %>" data-id="<%= sortedResults[i].id %>"></span>
-                    <span><%= testSortedResults[i].location %></span>
+                    <span><%= sortedResults[i].location %></span>
                     <span><button class="delete" data-id="<%= sortedResults[i].id %>">Delete</button></span>
                 </li>
             <% } %>
@@ -156,7 +156,7 @@
             <span><%= results[i].name %></span>
             <span><%= results[i].size %></span>
             <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-            <span><%= testSortedResults[i].location %></span>
+            <span><%= results[i].location %></span>
             <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
         </li>
         <% } %>
@@ -179,7 +179,7 @@
             <li data-id="<%= trousersSortedResults[i].id %>">
                 <span><%= trousersSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= trousersSortedResults[i].quantity %>" data-id="<%= trousersSortedResults[i].id %>"></span>
-                <span><%= testSortedResults[i].location %></span>
+                <span><%= trousersSortedResults[i].location %></span>
                 <span><button class="delete" data-id="<%= trousersSortedResults[i].id %>">Delete</button></span>
             </li>
         <% } %>
@@ -201,7 +201,7 @@
             <li data-id="<%= slacksSortedResults[i].id %>">
                 <span><%= slacksSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= slacksSortedResults[i].quantity %>" data-id="<%= slacksSortedResults[i].id %>"></span>
-                <span><%= testSortedResults[i].location %></span>
+                <span><%= slacksSortedResults[i].location %></span>
                 <span><button class="delete" data-id="<%= slacksSortedResults[i].id %>">Delete</button></span>
             </li>
         <% } %>
@@ -223,7 +223,7 @@
             <li data-id="<%= SkirtSortedResults[i].id %>">
                 <span><%= SkirtSortedResults[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= SkirtSortedResults[i].quantity %>" data-id="<%= SkirtSortedResults[i].id %>"></span>
-                <span><%= testSortedResults[i].location %></span>
+                <span><%= SkirtSortedResults[i].location %></span>
                 <span><button class="delete" data-id="<%= SkirtSortedResults[i].id %>">Delete</button></span>
             </li>
         <% } %>
@@ -246,7 +246,7 @@
         <li data-id="<%= results[i].id %>">
             <span><%= results[i].size %></span>
             <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-            <span><%= testSortedResults[i].location %></span>
+            <span><%= results[i].location %></span>
             <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
         </li>
         <% } %>
@@ -272,7 +272,7 @@
             <li data-id="<%= results[i].id %>">
                 <span><%= results[i].size %></span>
                 <span><input type="number" class="quantity" value="<%= results[i].quantity %>" data-id="<%= results[i].id %>"></span>
-                <span><%= testSortedResults[i].location %></span>
+                <span><%= results[i].location %></span>
                 <span><button class="delete" data-id="<%= results[i].id %>">Delete</button></span>
             </li>
         <% } %>

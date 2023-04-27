@@ -40,7 +40,8 @@ app.get('/data', (req, res) => {
             console.error('Error retrieving data: ' + error.stack);
             return res.status(500).json({ error: 'Error retrieving data' });
         }
-        res.json(results); 
+        // res.json(results); 
+        res.render('data.ejs', { results });
     });
 });
 

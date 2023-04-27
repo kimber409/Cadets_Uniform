@@ -41,7 +41,7 @@ app.get('/data', (req, res) => {
             return res.status(500).json({ error: 'Error retrieving data' });
         }
         // res.json(results); 
-        res.render('data.ejs', { results });
+        res.render('data.ejs', { data: results });
     });
 });
 

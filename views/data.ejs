@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Database Data</title>
@@ -18,5 +18,56 @@
 <body>
   <h1>Database Data</h1>
   <pre><%= JSON.stringify(data, null, 2) %></pre>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Database Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Database Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Quantity</th>
+        <th>Gender</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(function(item) { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.size %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.gender %></td>
+          <td><%= item.location %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </body>
 </html>

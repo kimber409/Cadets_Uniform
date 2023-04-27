@@ -44,27 +44,23 @@
   </style>
 </head>
 <body>
-  <h1>Database Data</h1>
+  <h1>Database Data - Box ID = <%= item.location %></h1>
   <table>
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Size</th>
         <th>Quantity</th>
         <th>Gender</th>
-        <th>Location</th>
       </tr>
     </thead>
     <tbody>
       <% data.forEach(function(item) { %>
         <tr>
-          <td><%= item.id %></td>
           <td><%= item.name %></td>
           <td><%= item.size %></td>
           <td><%= item.quantity %></td>
           <td><%= item.gender %></td>
-          <td><%= item.location %></td>
         </tr>
       <% }); %>
     </tbody>
